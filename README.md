@@ -26,7 +26,7 @@ Here is some housing data sorted by square footage.
 Since the craigslist api is a code translation of craigslist's search engine, I provided an example of that translation.
 
 ### Google Maps Example ###
-This is for displaying maps with craigslist data overlayed, unfortunatly maps are not showing up even if you view it in the nbviewer.
+This is for displaying maps with craigslist data overlayed, unfortunately maps are not showing up even if you view it in the nbviewer.
 
 
 
