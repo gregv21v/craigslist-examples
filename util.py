@@ -34,11 +34,24 @@ def get_attrs(data):
 
                 attrs.append(strippedString)
 
-
-
-
-
     return attrs
+
+
+# Gets the image urls from the
+# posting
+def get_img_urls(data):
+    #attrs = []
+    response = requests.get(data["url"])
+    soup = BeautifulSoup(response.content, 'html.parser')
+    thumbNails = soup.find_all("a", {"class" : "thumb"})
+    thumbNailUrls = []
+
+    for thumbNail in thumbNails:
+        thumbNailUrls.append(thumbNail["href"])
+
+    #print(thumbNailUrls)
+    return thumbNailUrls
+    
 
 # find all the attrs with the
 # given substring
