@@ -40,18 +40,28 @@ def get_attrs(data):
 # Gets the image urls from the
 # posting
 def get_img_urls(data):
-    #attrs = []
+    print("in get_img_urls")
     response = requests.get(data["url"])
     soup = BeautifulSoup(response.content, 'html.parser')
     thumbNails = soup.find_all("a", {"class" : "thumb"})
-    thumbNailUrls = []
 
-    for thumbNail in thumbNails:
-        thumbNailUrls.append(thumbNail["href"])
+    #print ("Thumbs: " + str(thumbNails))
 
-    #print(thumbNailUrls)
-    return thumbNailUrls
-    
+
+    if len(thumbNails) == 0:
+        # get the image from the img tag.
+        imgUrl = soup.select("div.slide > img")[0]["src"]
+
+        return imgUrl
+
+    else:
+        thumbNailUrls = []
+
+        for thumbNail in thumbNails:
+            thumbNailUrls.append(thumbNail["href"])
+
+        return thumbNailUrls
+
 
 # find all the attrs with the
 # given substring
